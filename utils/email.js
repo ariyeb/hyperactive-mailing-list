@@ -11,7 +11,7 @@ const sendEmail = (myEmail, password, toEmail, subject, message) => {
 
     const mailOptions = {
         from: myEmail,
-        to: toEmail,
+        bcc: toEmail,
         subject,
         text: message
     };

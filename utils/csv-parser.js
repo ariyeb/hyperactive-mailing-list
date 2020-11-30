@@ -2,7 +2,7 @@ const csv = require('csv-parser');
 const { resolve } = require('dns');
 const fs = require('fs');
 
-const transformCsvToArray = (file) => {
+const transformLeadsCsvToArray = (file) => {
     return new Promise((resolve, reject) => {
         const emails = [];
 
@@ -10,11 +10,26 @@ const transformCsvToArray = (file) => {
             .pipe(csv(["email"]))
             .on('data', (email) => emails.push(email.email))
             .on('end', () => {
-                // console.log(emails);
                 resolve(emails);
             });
     });
 };
 
-module.exports = transformCsvToArray;
+const transformMyemailCsvToArray = (file) => {
+    return new Promise((resolve, reject) => {
+        const emails = [];
+
+        fs.createReadStream(file)
+            .pipe(csv(["email", "password"]))
+            .on('data', (email) => emails.push(email))
+            .on('end', () => {
+                resolve(emails);
+            });
+    });
+};
+
+module.exports = {
+    transformLeadsCsvToArray,
+    transformMyemailCsvToArray
+};
 
