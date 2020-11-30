@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.0",
     "csv-parser": "^2.3.3",
     "nodemailer": "^6.4.16"
   }
