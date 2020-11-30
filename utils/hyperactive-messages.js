@@ -9,7 +9,6 @@ const sendHyperactiveMessage = async () => {
     myEmails.shift();
     let emailsArray = await transformLeadsCsvToArray('leads.csv');
     const message = await getTxtMessage('message.txt');
-    // console.log(myEmails, emailsArray, message);
 
     let emailsStrings = [];
     while (emailsArray.length > 0) {
